@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
+// basic header styles
+header {
+  box-shadow: 0px 5px 5px #999999;
+  height: 100px;
+  position: relative;
+}
+
+// nav styles
+.mobile-nav-wrap {
+  @media (min-width: 768px) {
+    /* display: none; */
+  }
+} // styling of dropdown menu
+.mobile-header-nav {
+  background-color: #222222;
+  display: none; // hide until menu is clicked
+  list-style: none; // replace with %styled-list
+  margin: 0; // replace with %styled-list
+  padding: 0; // replace with %styled-list
+  position: absolute;
+  top: 100px; // if nav sliding in below header
+  width: 100%;
+  li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    a {
+      color: white;
+      display: block;
+      padding: 15px 0;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        background-color: lighten(#222222, 5%);
+      }
+    }
+  }
+} // styling of hamburger menu
+.hamburger-menu {
+  display: inline-block;
+  height: 100px;
+  padding: 35px 25px;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    cursor: pointer;
+  }
+  .menu-item {
+    background: black;
+    display: block;
+    height: 3px;
+    margin: 0 0 10px;
+    transition: all 0.3s ease-in-out;
+    width: 40px;
+  }
+  &.open {
+    .menu-item {
+      margin: 0 0 5px;
+      &:first-child {
+        transform: rotate(45deg);
+        transform-origin: 10px;
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+        transform-origin: 8px;
+      }
+    }
+  }
+}

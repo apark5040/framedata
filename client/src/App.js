@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import Sample from "./components/Sample";
+import Main from "./pages/Main";
 
-// Sample.dispatch({type: "increment"});
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-
-
+      <div>
+        <Main></Main>
       </div>
     );
   }
