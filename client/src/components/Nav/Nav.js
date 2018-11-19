@@ -33,6 +33,7 @@ class Nav extends Component {
                 addOpen: "open"
             });
             mdiv[0].style.height = initHeight + 'px';
+            console.log(mdiv[0].style);
 
         }
     }
@@ -51,7 +52,7 @@ class Nav extends Component {
                     </ul>
                 </nav>
 
-                <a className={`mobile-menu-toggle hamburger-menu ${this.state.isOpen}`} href="#" onClick={this.slideToggle}>
+                <a className={`mobile-menu-toggle nav-menu ${this.state.addOpen}`} href="#" onClick={this.slideToggle}>
                     <span className="menu-item"></span>
                     <span className="menu-item"></span>
                     <span className="menu-item"></span>
