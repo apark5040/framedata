@@ -8,19 +8,20 @@ class Nav extends Component {
         addOpen: ""
     };
 
-    componentDidMount(){
-
-    }
-
     slideToggle = (event) => {
         event.preventDefault();
 
         var initHeight = 120;
 
         var mdiv = document.getElementsByClassName('mobile-header-nav');
+        var divStyle = mdiv[0].style;
+
+        var items = document.getElementsByClassName('listItems');
+        var itemsStyle = items[0].style;
 
         if (this.state.isOpen) {
-            mdiv[0].style.height = '0px';
+            divStyle.height = '0px';
+            itemsStyle.display = "none";
 
             this.setState({
                 isOpen: false,
@@ -32,8 +33,8 @@ class Nav extends Component {
                 isOpen: true,
                 addOpen: "open"
             });
-            mdiv[0].style.height = initHeight + 'px';
-            console.log(mdiv[0].style);
+            divStyle.height = initHeight + 'px';
+            itemsStyle.display = "block";
 
         }
     }
@@ -43,12 +44,14 @@ class Nav extends Component {
             <header>
                 <nav className="mobile-header-wrap" role="navigation">
                     <ul className="mobile-header-nav">
-                        <li>
-                            <a href="#">Example1</a>
-                        </li>
-                        <li>
-                            <a href="#">Example2</a>
-                        </li>
+                        <div className="listItems">
+                            <li>
+                                <a href="#">Example1</a>
+                            </li>
+                            <li>
+                                <a href="#">Example2</a>
+                            </li>
+                        </div>
                     </ul>
                 </nav>
 
