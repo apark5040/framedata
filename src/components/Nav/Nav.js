@@ -3,26 +3,28 @@ import "./Nav.scss";
 
 class Nav extends Component {
 
-    state = {
-        isOpen: false,
-        addOpen: ""
-    };
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            isOpen: false,
+            addOpen: ""
+        };
+    
+        this.handleCloseMenu = this.handleCloseMenu.bind(this);
+    }
 
     componentDidMount(){
-        document.addEventListener('click', this.handleClick, false);
+
     }
 
-    componentWillUnmount(){
-        document.removeEventListener('click', this.handleClick, false);
-    }
-
-    handleClick = (event) => {
-        event.preventDefault();
-        if(this.node.contains(event.target)){
+    handleCloseMenu(){
+        if(this.state.isOpen){
+            this.slideToggle();
+        }
+        else{
             return;
         }
-
-        this.slideToggle();
     }
 
     slideToggle = () => {
@@ -59,7 +61,7 @@ class Nav extends Component {
 
     render() {
         return (
-            <header>
+            <header onClick={this.handleCloseMenu}>
                 <nav className="mobile-header-wrap" role="navigation">
                     <ul className="mobile-header-nav">
                         <div className="listItems">
@@ -79,7 +81,7 @@ class Nav extends Component {
                     </ul>
                 </nav>
 
-                <button className={`mobile-menu-toggle nav-menu ${this.state.addOpen}`} ref={node => this.node = node} onClick={this.slideToggle}>
+                <button className={`mobile-menu-toggle nav-menu ${this.state.addOpen}`} onClick={this.slideToggle}>
                     <span className="menu-item"></span>
                     <span className="menu-item"></span>
                     <span className="menu-item"></span>
