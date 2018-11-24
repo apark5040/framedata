@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import Main from "./pages/Main";
+import Character from "./pages/Character";
 import Nav from "./components/Nav";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
           <Nav />
           <Switch>
             <Route exact path="/" component={Main}></Route>
+            <Route exact path="/character/:id" component={Character}></Route>
           </Switch>
         </div>
       </Router>

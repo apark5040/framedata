@@ -8,13 +8,30 @@ class Nav extends Component {
         addOpen: ""
     };
 
-    slideToggle = (event) => {
+    componentDidMount(){
+        document.addEventListener('click', this.handleClick, false);
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener('click', this.handleClick, false);
+    }
+
+    handleClick = (event) => {
         event.preventDefault();
+        if(this.node.contains(event.target)){
+            return;
+        }
 
-        var initHeight = 120;
+        this.slideToggle();
+    }
 
-        var mdiv = document.getElementsByClassName('mobile-header-nav');
-        var divStyle = mdiv[0].style;
+    slideToggle = () => {
+
+        let initHeight = 220;
+        let initWidth = 20;
+
+        const mdiv = document.getElementsByClassName('mobile-header-nav');
+        const divStyle = mdiv[0].style;
 
         var items = document.getElementsByClassName('listItems');
         var itemsStyle = items[0].style;
@@ -34,6 +51,7 @@ class Nav extends Component {
                 addOpen: "open"
             });
             divStyle.height = initHeight + 'px';
+            divStyle.width = initWidth + 'vw';
             itemsStyle.display = "block";
 
         }
@@ -46,20 +64,26 @@ class Nav extends Component {
                     <ul className="mobile-header-nav">
                         <div className="listItems">
                             <li>
-                                <a href="#">Example1</a>
+                                <a href="/">Main</a>
                             </li>
                             <li>
-                                <a href="#">Example2</a>
+                                <a href="/character/1">Example1</a>
+                            </li>
+                            <li>
+                                <a href="/character/2">Example2</a>
+                            </li>
+                            <li>
+                                <a href="/character/3">Example3</a>
                             </li>
                         </div>
                     </ul>
                 </nav>
 
-                <a className={`mobile-menu-toggle nav-menu ${this.state.addOpen}`} href="#" onClick={this.slideToggle}>
+                <button className={`mobile-menu-toggle nav-menu ${this.state.addOpen}`} ref={node => this.node = node} onClick={this.slideToggle}>
                     <span className="menu-item"></span>
                     <span className="menu-item"></span>
                     <span className="menu-item"></span>
-                </a>
+                </button>
             </header>
 
         );
